@@ -16,7 +16,6 @@ export default function InputSelectionCard({dataCallback}) {
       <CardBody>
         <InputFileSelection dataCallback={dataCallback}/>
         <br/>
-        <br/>
         <InputUrlSelection dataCallback={dataCallback}/>
       </CardBody>
     </Card>

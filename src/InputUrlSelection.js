@@ -4,7 +4,8 @@ import { Button, ButtonVariant, FormGroup, InputGroup, Text, TextInput, HelperTe
 
 const isValid = (url) => {
   try {
-    return Boolean(new URL(url));
+    const protocol = new URL(url).protocol;
+    return protocol === "http:" || protocol === "https:";
   }
   catch(e) {
     return false;
@@ -19,13 +20,11 @@ const initialUrl = () => {
 
 export default function InputUrlSelection({dataCallback}) {
   const [value, setValue] = useState(initialUrl);
-  const [valid, setIsValid] = useState(true);
   const [loading, setIsLoading] = useState(false);
   const [failed, setFailed] = useState(false);
 
-  const onChange = (value) => {
-    setIsValid(isValid(value));
-    setValue(value);
+  const onChange = (url) => {
+    setValue(url);
     setFailed(false);
   };
 
@@ -63,8 +62,9 @@ export default function InputUrlSelection({dataCallback}) {
       .finally(() => {setIsLoading(false)});
   };
 
+  const valid = isValid(value);
   const displayError = (!valid && value !== "");
-  const validated = value === "" ? null : (valid ? ValidatedOptions.success :  ValidatedOptions.error)
+  const validState = value === "" ? null : (valid ? ValidatedOptions.success :  ValidatedOptions.error)
 
   return (
     <>
@@ -77,7 +77,7 @@ export default function InputUrlSelection({dataCallback}) {
               type="url"
               placeholder="HTTP URL"
               aria-label="URL of a remote log file"
-              validated={validated}
+              validated={validState}
           />
           <Button
             variant={ButtonVariant.control}

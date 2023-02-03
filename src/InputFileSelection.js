@@ -27,7 +27,7 @@ export default function InputFileSelection({dataCallback}) {
       dataCallback(content, filename);
     };
 
-    if (filename.match(/\.(t?gz|xz|bz2|tar)$/i)) {
+    if (filename.match(/\.(gz|xz|bz2|tar)$/i)) {
       reader.readAsArrayBuffer(value);
     }
     else {

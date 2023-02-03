@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Page, PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
+import { Card, CardHeader, Page, PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
 
 import NotesCard from "./NotesCard";
 import InputSelectionCard from "./InputSelectionCard";
@@ -39,9 +39,13 @@ export default function App() {
     <>
       <Page>
         <PageSection>
-          <TextContent>
-            <Text component={TextVariants.h1}>YaST Log Viewer</Text>
-          </TextContent>
+          <Card>
+            <CardHeader>
+              <TextContent>
+                <Text component={TextVariants.h1}>YaST Log Viewer</Text>
+              </TextContent>
+            </CardHeader>
+          </Card>
         </PageSection>
         <PageSection>
           <FirefoxWarning />

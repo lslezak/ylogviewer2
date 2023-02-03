@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from "react";
+import { Page,  PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
 
 import NotesCard from "./NotesCard";
 import InputSelectionCard from "./InputSelectionCard";
 import ArchiveViewer from "./ArchiveViewer";
-
-import { Page,  PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
+import FirefoxWarning from "./FirefoxWarning";
 
 import "./App.css";
 
@@ -44,6 +44,7 @@ export default function App() {
           </TextContent>
         </PageSection>
         <PageSection>
+          <FirefoxWarning/>
           <InputSelectionCard dataCallback={dataCallback}/>
         </PageSection>
         <PageSection>

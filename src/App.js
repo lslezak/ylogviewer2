@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 
 import NotesCard from "./NotesCard";
 import InputSelectionCard from "./InputSelectionCard";
-import PageHeader from "./PageHeader";
 import ArchiveViewer from "./ArchiveViewer";
+
+import { Page,  PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
 
 import "./App.css";
 
@@ -36,18 +37,23 @@ export default function App() {
 
   return (
     <>
-      <header>
-        <PageHeader/>
-      </header>
-      <main>
-        <InputSelectionCard dataCallback={dataCallback}/>
-        <br />
-        { state.name ?
-          <ArchiveViewer data={state.data} name={state.name}/>
-          :
-          <NotesCard />
-        }
-      </main>
+      <Page>
+        <PageSection>
+          <TextContent>
+            <Text component={TextVariants.h1}>YaST Log Viewer</Text>
+          </TextContent>
+        </PageSection>
+        <PageSection>
+          <InputSelectionCard dataCallback={dataCallback}/>
+        </PageSection>
+        <PageSection>
+          { state.name ?
+            <ArchiveViewer data={state.data} name={state.name}/>
+            :
+            <NotesCard />
+          }
+        </PageSection>
+      </Page>
     </>
   );
 };

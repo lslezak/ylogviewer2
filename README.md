@@ -1,6 +1,7 @@
 # ylogviewer2
 
-[![Deploy to GitHub Pages](https://github.com/lslezak/ylogviewer2/actions/workflows/pages.yml/badge.svg)](https://github.com/lslezak/ylogviewer2/actions/workflows/pages.yml)
+[![GitHub Pages](https://github.com/lslezak/ylogviewer2/actions/workflows/pages.yml/badge.svg)](https://github.com/lslezak/ylogviewer2/actions/workflows/pages.yml)
+[![Eslint](https://github.com/lslezak/ylogviewer2/actions/workflows/eslint.yml/badge.svg)](https://github.com/lslezak/ylogviewer2/actions/workflows/eslint.yml)
 
 Experimental y2log viewer
 

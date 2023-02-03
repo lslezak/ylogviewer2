@@ -1,6 +1,8 @@
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 const HOST = process.env.HOST || "localhost";
 const PORT = process.env.PORT || "9000";
 
@@ -18,6 +20,9 @@ module.exports = merge(common, {
     overlay: true,
     open: true
   },
+  plugins: [
+    new ESLintPlugin({ extensions: ["js", "jsx"], failOnWarning: true, })
+  ],
   module: {
     rules: [
       {

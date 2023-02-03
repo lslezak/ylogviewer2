@@ -30,6 +30,51 @@ const defaultComponents = (components) => {
 // which log levels should be displayed by default, list of levels 0...5
 const defaultLogLevels = [true, true, true, true, true, true];
 
+const renderLine = (item, key, logLevels, properties, components) => {
+  if (!logLevels[item.level] || !components[item.group]) return null;
+
+  return (
+    <div className={`logline loglevel-${item.level}`} key={`log-line-${key}`}>
+      { properties.date && <span>{item.date}{" "}</span> }
+      { properties.time && <span>{item.time}{" "}</span> }
+      { properties.level && <span>{"<"}{item.level}{"> "}</span> }
+      { properties.host && <span>{item.host}{" "}</span> }
+      { properties.pid && <span>{"("}{item.pid}{") "}</span> }
+      { properties.component && <span>{"["}{item.component}{"] "}</span> }
+      { properties.location && <span>{item.location}{" "}</span> }
+      { properties.message && <span className="important">{item.message}{" "}</span> }
+    </div>
+  );
+};
+
+const renderLines = (lines, logLevels, properties, components) => {
+  const ret = [];
+
+  while (lines.length > 0) {
+    const line = lines.shift();
+
+    const startGroup = line.message.match(/^::group::(\d+\.\d+)::(.*)/);
+    if (startGroup) {
+      ret.push(
+        <details key={`group-start-${lines.length}`}>
+          <summary>{startGroup[2]}</summary>
+          {renderLine(line, lines.length, logLevels, properties, components)}
+          {renderLines(lines, logLevels, properties, components)}
+        </details>
+      );
+    } else {
+      ret.push(renderLine(line, lines.length, logLevels, properties, components));
+    }
+
+    const endGroup = line.message.match(/^::endgroup::(\d+\.\d+)::(.*)/);
+    if (endGroup) {
+      return ret;
+    }
+  }
+
+  return ret;
+};
+
 export default function LogViewer({ name, data }) {
   const [items,] = useState(() => { return y2logparser(data) });
 
@@ -49,23 +94,8 @@ export default function LogViewer({ name, data }) {
     setComponents(comps);
   };
 
-  const lines = [];
-  items.lines.forEach((item, index) => {
-    if (logLevels[item.level] && components[item.group]) {
-      lines.push(
-        <div className={`logline loglevel-${item.level}`} key={`log-line-${index}`}>
-          { properties.date && <span>{item.date}{" "}</span> }
-          { properties.time && <span>{item.time}{" "}</span> }
-          { properties.level && <span>{"<"}{item.level}{"> "}</span> }
-          { properties.host && <span>{item.host}{" "}</span> }
-          { properties.pid && <span>{"("}{item.pid}{") "}</span> }
-          { properties.component && <span>{"["}{item.component}{"] "}</span> }
-          { properties.location && <span>{item.location}{" "}</span> }
-          { properties.message && <span className="important">{item.message}{" "}</span> }
-        </div>
-      );
-    }
-  });
+  // FIXME: use index, avoid copying the list
+  const lines = renderLines([...items.lines], logLevels, properties, components);
 
   return (
     <Card isFlat isRounded>
@@ -83,7 +113,7 @@ export default function LogViewer({ name, data }) {
           <ComponentFilter input={components} onChangeCallback={onComponentChangeCallback} />
         </FormGroup>
         <br />
-        <TextContent>
+        <TextContent className="logview">
           {lines}
         </TextContent>
       </CardBody>

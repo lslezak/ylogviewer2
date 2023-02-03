@@ -38,14 +38,6 @@ export default function NotesCard() {
         <Grid span={12} xl={8} xl2={6}>
           <GridItem>
             <TextContent>
-              <Text component={TextVariants.h3}>Experimental Project</Text>
-
-              <Text>
-                <WarningTriangleIcon/> {" "}
-                This is still a proof of concept project for experiments. That just means
-                there might be bugs. <BugIcon/>
-              </Text>
-
               <Text component={TextVariants.h3}>Supported Files</Text>
 
               <Text>You can load the log file in several formats:</Text>

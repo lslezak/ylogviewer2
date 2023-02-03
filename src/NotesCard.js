@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { Button, Card, CardTitle, CardBody, CardActions, CardHeader, Grid, GridItem, TextContent, Text, TextList, TextListItem, TextVariants } from "@patternfly/react-core";
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 import InfoAltIcon from '@patternfly/react-icons/dist/esm/icons/info-alt-icon';
-import WarningTriangleIcon from '@patternfly/react-icons/dist/esm/icons/warning-triangle-icon';
-import BugIcon from '@patternfly/react-icons/dist/esm/icons/bug-icon';
 
 export default function NotesCard() {
   // the notes are visible
@@ -55,7 +53,7 @@ export default function NotesCard() {
                 </TextListItem>
                 <TextListItem>Tarball (*.tar.gz, *.tar.bz2 or *.tar.xz, created by the{" "}
                   <Text
-component={TextVariants.a}
+                    component={TextVariants.a}
                     href="https://github.com/yast/yast-yast2/blob/master/scripts/save_y2logs"
                   >
                     save_y2logs
@@ -69,7 +67,7 @@ component={TextVariants.a}
               <Text>
                 Downloading remote files works only from the servers which allow {" "}
                 <Text
-component={TextVariants.a}
+                  component={TextVariants.a}
                   href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing"
                 >
                   cross-origin resource sharing (CORS)

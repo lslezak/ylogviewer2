@@ -1,5 +1,7 @@
 # ylogviewer2
 
+[![Deploy to GitHub Pages](https://github.com/lslezak/ylogviewer2/actions/workflows/pages.yml/badge.svg)](https://github.com/lslezak/ylogviewer2/actions/workflows/pages.yml)
+
 Experimental y2log viewer
 
 ## Examples

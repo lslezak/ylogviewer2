@@ -1,6 +1,6 @@
 
-import React, { useState } from "react";
-import { Button, Card, CardTitle, CardBody, CardActions, CardHeader, TextContent, Text, TextList, TextListItem, TextVariants } from "@patternfly/react-core";
+import React from "react";
+import { Card, CardTitle, CardBody, CardHeader } from "@patternfly/react-core";
 
 import InputFileSelection from "./InputFileSelection";
 import InputUrlSelection from "./InputUrlSelection";

@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from "react";
-import { Bullseye, Spinner, Text } from "@patternfly/react-core";
+import React, { useState, } from "react";
+import { Bullseye, Spinner } from "@patternfly/react-core";
 
 import LogViewer from "./LogViewer";
 
@@ -82,9 +82,8 @@ export default function ArchiveViewer({ data, name }) {
 
     const y2log = tarReader.getTextFile("YaST2/y2log");
     setState({ ...state, data: null, name: state.name.replace(/\.tar$/i, ""), y2log });
-  }
-  // just a plain file, convert to string
-  else {
+  } else {
+    // just a plain file, convert to string
     if (typeof state.data === "string") {
       setState({ ...state, data: null, y2log: state.data });
     } else {

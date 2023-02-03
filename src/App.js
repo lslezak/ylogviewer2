@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Page, PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
 
 import NotesCard from "./NotesCard";

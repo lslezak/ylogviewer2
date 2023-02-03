@@ -1,9 +1,9 @@
 {
-  "name": "patternfly-seed",
+  "name": "ylogbrowser",
   "version": "0.0.1",
-  "description": "An open source build scaffolding utility for web apps.",
+  "description": "Browse the YaST log files",
   "main": "index.js",
-  "repository": "https://github.com/patternfly/patternfly-react-seed.git",
+  "repository": "https://github.com/lslezak/ylogviewer2",
   "license": "MIT",
   "private": true,
   "scripts": {

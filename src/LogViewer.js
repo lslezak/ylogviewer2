@@ -31,7 +31,7 @@ const defaultComponents = (components) => {
 const defaultLogLevels = [true, true, true, true, true, true];
 
 export default function LogViewer({ name, data }) {
-  const [items, setItems] = useState(() => { return y2logparser(data) });
+  const [items,] = useState(() => { return y2logparser(data) });
 
   const [logLevels, setLogLevels] = useState(defaultLogLevels);
   const [properties, setProperties] = useState(defaultProperties);

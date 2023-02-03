@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Alert, AlertActionCloseButton} from "@patternfly/react-core";
+import { Alert, AlertActionCloseButton } from "@patternfly/react-core";
 
 export default function FirefoxWarning() {
   const [isOpen, setIsOpen] = useState(true);
@@ -23,11 +23,11 @@ export default function FirefoxWarning() {
         <p>
           Due to a bug in the Tar library the *.tar.* archives cannot be
           processed properly in the FireFox browser.
-          <br/>
+          <br />
           Either use another browser or unpack the archive locally.
         </p>
       </Alert>
-      <br/>
+      <br />
     </>
   );
-};
+}

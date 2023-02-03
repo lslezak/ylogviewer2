@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Page,  PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
+import { Page, PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
 
 import NotesCard from "./NotesCard";
 import InputSelectionCard from "./InputSelectionCard";
@@ -19,11 +19,11 @@ export default function App() {
 
   const dataCallback = (data, name) => {
     console.log("Loaded data from", name);
-    setState({...state, data, name })
+    setState({ ...state, data, name });
 
     // update the page URL to allow sharing the link
-    let location_url = new URL(window.location);
-    let search_params = location_url.searchParams;
+    const location_url = new URL(window.location);
+    const search_params = location_url.searchParams;
 
     if (name.match(/^https?:\/\//))
       search_params.set("log", name);
@@ -44,17 +44,15 @@ export default function App() {
           </TextContent>
         </PageSection>
         <PageSection>
-          <FirefoxWarning/>
-          <InputSelectionCard dataCallback={dataCallback}/>
+          <FirefoxWarning />
+          <InputSelectionCard dataCallback={dataCallback} />
         </PageSection>
         <PageSection>
-          { state.name ?
-            <ArchiveViewer data={state.data} name={state.name}/>
-            :
-            <NotesCard />
-          }
+          { state.name
+            ? <ArchiveViewer data={state.data} name={state.name} />
+            : <NotesCard />}
         </PageSection>
       </Page>
     </>
   );
-};
+}

@@ -6,11 +6,10 @@ const isValid = (url) => {
   try {
     const protocol = new URL(url).protocol;
     return protocol === "http:" || protocol === "https:";
-  }
-  catch(e) {
+  } catch (e) {
     return false;
   }
-}
+};
 
 // initialize the log location from the URL search parameters
 const initialUrl = () => {
@@ -18,7 +17,7 @@ const initialUrl = () => {
   return params.get("log") || "";
 };
 
-export default function InputUrlSelection({dataCallback}) {
+export default function InputUrlSelection({ dataCallback }) {
   const [value, setValue] = useState(initialUrl);
   const [loading, setIsLoading] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -46,8 +45,7 @@ export default function InputUrlSelection({dataCallback}) {
 
         if (value.match(/\.(t?gz|xz|bz2|tar)$/i)) {
           return response.arrayBuffer();
-        }
-        else {
+        } else {
           return response.text();
         }
       })
@@ -59,12 +57,12 @@ export default function InputUrlSelection({dataCallback}) {
         console.error(error);
         setFailed(true);
       })
-      .finally(() => {setIsLoading(false)});
+      .finally(() => { setIsLoading(false) });
   };
 
   const valid = isValid(value);
   const displayError = (!valid && value !== "");
-  const validState = value === "" ? null : (valid ? ValidatedOptions.success :  ValidatedOptions.error)
+  const validState = value === "" ? null : (valid ? ValidatedOptions.success : ValidatedOptions.error);
 
   return (
     <>
@@ -93,20 +91,18 @@ export default function InputUrlSelection({dataCallback}) {
               <HelperTextItem variant="error" hasIcon>
                 Invalid URL
               </HelperTextItem>
-            </HelperText>
-          }
+            </HelperText>}
           { failed &&
             <HelperText>
               <HelperTextItem variant="error" hasIcon>
                 Download failed
               </HelperTextItem>
-            </HelperText>
-          }
+            </HelperText>}
           {/* append non breaking space to keep constant height of the error placeholder */}
           <Text component="span">{"\u00A0"}</Text>
         </InputGroup>
-        <Button onClick={load} isLoading={loading} isDisabled={!valid || value === "" || loading} variant="primary" icon="" >Load URL</Button>
+        <Button onClick={load} isLoading={loading} isDisabled={!valid || value === "" || loading} variant="primary" icon="">Load URL</Button>
       </FormGroup>
     </>
   );
-};
+}

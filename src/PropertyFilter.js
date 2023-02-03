@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { OptionsMenu, OptionsMenuItem, OptionsMenuToggleWithText, OptionsMenuSeparator } from '@patternfly/react-core';
 import CaretDownIcon from '@patternfly/react-icons/dist/esm/icons/caret-down-icon';
 
-export default function AttributeFilter({input, onChangeCallback}) {
+export default function AttributeFilter({ input, onChangeCallback }) {
   const [logAttributes, setAttributes] = useState(input);
   const [isOpen, setIsOpen] = useState(false);
 
   const onSelect = (key) => {
-    let attrs = {...logAttributes};
+    const attrs = { ...logAttributes };
     attrs[key] = !attrs[key];
     setAttributes(attrs);
     if (onChangeCallback) onChangeCallback(attrs);
@@ -19,8 +19,8 @@ export default function AttributeFilter({input, onChangeCallback}) {
   };
 
   const onSelectAll = (value) => {
-    let attrs = {};
-    Object.keys(logAttributes).forEach((key) => {attrs[key] = value});
+    const attrs = {};
+    Object.keys(logAttributes).forEach((key) => { attrs[key] = value });
     setAttributes(attrs);
     if (onChangeCallback) onChangeCallback(attrs);
   };
@@ -36,12 +36,12 @@ export default function AttributeFilter({input, onChangeCallback}) {
     message: "Message"
   };
 
-  let menuItems = [];
+  const menuItems = [];
 
   for (const [key, label] of Object.entries(labels)) {
     menuItems.push(
       <OptionsMenuItem
-        onSelect={() => {onSelect(key)} }
+        onSelect={() => { onSelect(key) } }
         isSelected={logAttributes[key]}
         key={`log-attr-${key}`}
       >
@@ -51,21 +51,24 @@ export default function AttributeFilter({input, onChangeCallback}) {
   }
 
   // add All/None items
-  menuItems.push(<OptionsMenuSeparator key="separator"/>);
-  menuItems.push(<OptionsMenuItem onSelect={() => {onSelectAll(true)} } key="all">All</OptionsMenuItem>);
-  menuItems.push(<OptionsMenuItem onSelect={() => {onSelectAll(false)} } key="none">None</OptionsMenuItem>);
+  menuItems.push(<OptionsMenuSeparator key="separator" />);
+  menuItems.push(<OptionsMenuItem onSelect={() => { onSelectAll(true) } } key="all">All</OptionsMenuItem>);
+  menuItems.push(<OptionsMenuItem onSelect={() => { onSelectAll(false) } } key="none">None</OptionsMenuItem>);
 
-  const toggle = <OptionsMenuToggleWithText
+  const toggle = (
+    <OptionsMenuToggleWithText
     toggleText="Log properties"
-    toggleButtonContents={<CaretDownIcon/>}
+    toggleButtonContents={<CaretDownIcon />}
     onToggle={onToggle}
-  />;
+    />
+  );
 
   return (
     <OptionsMenu
       menuItems={menuItems}
       isOpen={isOpen}
       isText
-      toggle={toggle} />
+      toggle={toggle}
+    />
   );
-};
+}

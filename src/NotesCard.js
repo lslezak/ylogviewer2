@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Button, Card, CardTitle, CardBody, CardActions, CardHeader, Grid, GridItem, TextContent, Text, TextList, TextListItem, TextVariants} from "@patternfly/react-core";
+import { Button, Card, CardTitle, CardBody, CardActions, CardHeader, Grid, GridItem, TextContent, Text, TextList, TextListItem, TextVariants } from "@patternfly/react-core";
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 import InfoAltIcon from '@patternfly/react-icons/dist/esm/icons/info-alt-icon';
 import WarningTriangleIcon from '@patternfly/react-icons/dist/esm/icons/warning-triangle-icon';
@@ -20,7 +20,7 @@ export default function NotesCard() {
     <Card isFlat isRounded>
       <CardHeader>
         <CardTitle component="h2">
-          <InfoAltIcon/>
+          <InfoAltIcon />
           {" "} Notes
         </CardTitle>
         <CardActions>
@@ -29,7 +29,7 @@ export default function NotesCard() {
             onClick={close}
             aria-label="Close notes box"
           >
-            <TimesIcon/>
+            <TimesIcon />
           </Button>
         </CardActions>
       </CardHeader>
@@ -48,12 +48,16 @@ export default function NotesCard() {
                 </TextListItem>
                 <TextListItem>Gzip compressed file (*.gz, like y2log-1.gz)</TextListItem>
                 <TextListItem>XZ compressed file (*.xz, currently not
-                  created by YaST, you have to compress the file manually)</TextListItem>
+                  created by YaST, you have to compress the file manually)
+                </TextListItem>
                 <TextListItem>Bzip2 compressed file (*.bz2, currently not
-                  created by YaST, you have to compress the file manually)</TextListItem>
+                  created by YaST, you have to compress the file manually)
+                </TextListItem>
                 <TextListItem>Tarball (*.tar.gz, *.tar.bz2 or *.tar.xz, created by the{" "}
-                  <Text component={TextVariants.a}
-                    href="https://github.com/yast/yast-yast2/blob/master/scripts/save_y2logs">
+                  <Text
+component={TextVariants.a}
+                    href="https://github.com/yast/yast-yast2/blob/master/scripts/save_y2logs"
+                  >
                     save_y2logs
                   </Text>
                   {" "}script, currently only the YaST2/y2log file is displayed)
@@ -64,13 +68,17 @@ export default function NotesCard() {
 
               <Text>
                 Downloading remote files works only from the servers which allow {" "}
-                <Text component={TextVariants.a}
-                  href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">
+                <Text
+component={TextVariants.a}
+                  href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing"
+                >
                   cross-origin resource sharing (CORS)
                 </Text>
                 , this is a limitation of the {" "}
-                <Text component={TextVariants.a}
-                  href="https://en.wikipedia.org/wiki/Same-origin_policy">
+                <Text
+component={TextVariants.a}
+                  href="https://en.wikipedia.org/wiki/Same-origin_policy"
+                >
                   same-origin security policy
                 </Text>.
                 Not all servers support cross-origin requests, you might get errors
@@ -102,4 +110,4 @@ export default function NotesCard() {
       </CardBody>
     </Card>
   );
-};
+}

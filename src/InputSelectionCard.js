@@ -1,11 +1,11 @@
 
 import React, { useState } from "react";
-import { Button, Card, CardTitle, CardBody, CardActions, CardHeader, TextContent, Text, TextList, TextListItem, TextVariants} from "@patternfly/react-core";
+import { Button, Card, CardTitle, CardBody, CardActions, CardHeader, TextContent, Text, TextList, TextListItem, TextVariants } from "@patternfly/react-core";
 
 import InputFileSelection from "./InputFileSelection";
 import InputUrlSelection from "./InputUrlSelection";
 
-export default function InputSelectionCard({dataCallback}) {
+export default function InputSelectionCard({ dataCallback }) {
   return (
     <Card isFlat isRounded>
       <CardHeader>
@@ -14,10 +14,10 @@ export default function InputSelectionCard({dataCallback}) {
         </CardTitle>
       </CardHeader>
       <CardBody>
-        <InputFileSelection dataCallback={dataCallback}/>
-        <br/>
-        <InputUrlSelection dataCallback={dataCallback}/>
+        <InputFileSelection dataCallback={dataCallback} />
+        <br />
+        <InputUrlSelection dataCallback={dataCallback} />
       </CardBody>
     </Card>
   );
-};
+}

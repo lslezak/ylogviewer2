@@ -1,0 +1,58 @@
+
+import React, { useState, useEffect } from "react";
+
+import NotesCard from "./NotesCard";
+import InputSelectionCard from "./InputSelectionCard";
+import PageHeader from "./PageHeader";
+import ArchiveViewer from "./ArchiveViewer";
+
+import "./App.css";
+
+const initialState = {
+  name: null,
+  data: null,
+};
+
+export default function App() {
+  const [state, setState] = useState(initialState);
+
+  const dataCallback = (data, name) => {
+    console.log("Loaded data from", name);
+    setState({...state, data, name })
+
+    // update the current page URL without reloading
+    let location_url = new URL(window.location);
+    let search_params = location_url.searchParams;
+
+    if (name.match(/^https?\/\//i)) {
+      console.log("Adding log URL param");
+      search_params.set("log", name);
+    }
+    else {
+      console.log("Removing log URL param");
+      search_params.delete("log");
+    }
+
+    console.log("New URL: ", location_url);
+    window.history.pushState("", "", location_url);
+  };
+
+  console.log("rendering ", state);
+
+  return (
+    <>
+      <header>
+        <PageHeader/>
+      </header>
+      <main>
+        <InputSelectionCard dataCallback={dataCallback}/>
+        <br />
+        { state.name ?
+          <ArchiveViewer data={state.data} name={state.name}/>
+          :
+          <NotesCard />
+        }
+      </main>
+    </>
+  );
+};

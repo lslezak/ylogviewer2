@@ -57,7 +57,7 @@ const renderLines = (lines, logLevels, properties, components) => {
     if (startGroup) {
       ret.push(
         <details key={`group-start-${lines.length}`}>
-          <summary>{startGroup[2]}</summary>
+          <summary className={`loglevel-${line.level}`}>{startGroup[2]}</summary>
           {renderLine(line, lines.length, logLevels, properties, components)}
           {renderLines(lines, logLevels, properties, components)}
         </details>

@@ -1,39 +1,36 @@
 
 import React, { useState } from "react";
-import { OptionsMenu, OptionsMenuItem, OptionsMenuToggleWithText, OptionsMenuSeparator } from '@patternfly/react-core';
-import CaretDownIcon from '@patternfly/react-icons/dist/esm/icons/caret-down-icon';
+import { OptionsMenu, OptionsMenuItem, OptionsMenuToggleWithText, OptionsMenuSeparator } from "@patternfly/react-core";
+import CaretDownIcon from "@patternfly/react-icons/dist/esm/icons/caret-down-icon";
+
+const labels = [
+  "Debug",
+  "Info",
+  "Warning",
+  "Error",
+  "Security",
+  "Internal"
+];
 
 export default function LogLevelFilter({ input, onChangeCallback }) {
-  const [logLevels, setLogLevels] = useState(input);
   const [isOpen, setIsOpen] = useState(false);
 
   const onSelect = (level) => {
-    const levels = [...logLevels];
+    const levels = [...input];
     levels[level] = !levels[level];
-    setLogLevels(levels);
     if (onChangeCallback) onChangeCallback(levels);
   };
 
   const onSelectAll = (value) => {
-    const levels = logLevels.map(() => { return value });
-    setLogLevels(levels);
+    const levels = input.map(() => { return value });
     if (onChangeCallback) onChangeCallback(levels);
   };
-
-  const labels = [
-    "Debug",
-    "Info",
-    "Warning",
-    "Error",
-    "Security",
-    "Internal"
-  ];
 
   const menuItems = labels.map((label, index) => {
     return (
       <OptionsMenuItem
         onSelect={() => { onSelect(index) } }
-        isSelected={logLevels[index]}
+        isSelected={input[index]}
         key={`log-level-${index}`}
       >
         {`${index} - ${label}`}

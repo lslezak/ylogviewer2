@@ -1,16 +1,14 @@
 
 import React, { useState } from "react";
-import { OptionsMenu, OptionsMenuItem, OptionsMenuToggleWithText, OptionsMenuSeparator } from '@patternfly/react-core';
-import CaretDownIcon from '@patternfly/react-icons/dist/esm/icons/caret-down-icon';
+import { OptionsMenu, OptionsMenuItem, OptionsMenuToggleWithText, OptionsMenuSeparator } from "@patternfly/react-core";
+import CaretDownIcon from "@patternfly/react-icons/dist/esm/icons/caret-down-icon";
 
 export default function AttributeFilter({ input, onChangeCallback }) {
-  const [logAttributes, setAttributes] = useState(input);
   const [isOpen, setIsOpen] = useState(false);
 
   const onSelect = (key) => {
-    const attrs = { ...logAttributes };
+    const attrs = { ...input };
     attrs[key] = !attrs[key];
-    setAttributes(attrs);
     if (onChangeCallback) onChangeCallback(attrs);
   };
 
@@ -20,8 +18,7 @@ export default function AttributeFilter({ input, onChangeCallback }) {
 
   const onSelectAll = (value) => {
     const attrs = {};
-    Object.keys(logAttributes).forEach((key) => { attrs[key] = value });
-    setAttributes(attrs);
+    Object.keys(input).forEach((key) => { attrs[key] = value });
     if (onChangeCallback) onChangeCallback(attrs);
   };
 
@@ -42,7 +39,7 @@ export default function AttributeFilter({ input, onChangeCallback }) {
     menuItems.push(
       <OptionsMenuItem
         onSelect={() => { onSelect(key) } }
-        isSelected={logAttributes[key]}
+        isSelected={input[key]}
         key={`log-attr-${key}`}
       >
         {label}

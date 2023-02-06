@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { Card, CardHeader, Page, PageSection, Text, TextContent, TextVariants } from "@patternfly/react-core";
 
-import NotesCard from "./NotesCard";
-import InputSelectionCard from "./InputSelectionCard";
-import ArchiveViewer from "./ArchiveViewer";
 import FirefoxWarning from "./FirefoxWarning";
+import InputSelectionCard from "./InputSelectionCard";
+import LogCard from "./LogCard";
+import NotesCard from "./NotesCard";
 
 import "./App.css";
 
@@ -33,8 +33,6 @@ export default function App() {
     window.history.pushState("", "", location_url);
   };
 
-  console.log("rendering ", state);
-
   return (
     <>
       <Page>
@@ -53,7 +51,7 @@ export default function App() {
         </PageSection>
         <PageSection>
           { state.name
-            ? <ArchiveViewer data={state.data} name={state.name} />
+            ? <LogCard data={state.data} name={state.name} />
             : <NotesCard />}
         </PageSection>
       </Page>

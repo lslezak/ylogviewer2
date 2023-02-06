@@ -1,10 +1,10 @@
 
 import React, { useState } from "react";
-import { Button, FileUpload, FormGroup } from '@patternfly/react-core';
+import { Button, FileUpload, FormGroup } from "@patternfly/react-core";
 
 export default function InputFileSelection({ dataCallback }) {
-  const [value, setValue] = useState('');
-  const [filename, setFilename] = useState('');
+  const [value, setValue] = useState("");
+  const [filename, setFilename] = useState("");
   const [loading, setIsLoading] = useState(false);
 
   const handleChange = (value, filename, _event) => {

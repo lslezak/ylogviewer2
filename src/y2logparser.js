@@ -67,7 +67,7 @@ export default function y2logparser(y2log) {
     }
   });
 
-  console.time("Parsing y2log");
+  console.timeEnd("Parsing y2log");
   console.log("Loaded " + lines.length + " lines");
 
   return { lines, components };

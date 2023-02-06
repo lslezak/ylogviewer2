@@ -1,8 +1,8 @@
 
 import React, { useState } from "react";
 import { Button, Card, CardTitle, CardBody, CardActions, CardHeader, Grid, GridItem, TextContent, Text, TextList, TextListItem, TextVariants } from "@patternfly/react-core";
-import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
-import InfoAltIcon from '@patternfly/react-icons/dist/esm/icons/info-alt-icon';
+import TimesIcon from "@patternfly/react-icons/dist/esm/icons/times-icon";
+import InfoAltIcon from "@patternfly/react-icons/dist/esm/icons/info-alt-icon";
 
 export default function NotesCard() {
   // the notes are visible

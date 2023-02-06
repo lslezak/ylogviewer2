@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Button, ButtonVariant, FormGroup, InputGroup, Text, TextInput, HelperText, HelperTextItem, ValidatedOptions } from '@patternfly/react-core';
+import { Button, ButtonVariant, FormGroup, InputGroup, Text, TextInput, HelperText, HelperTextItem, ValidatedOptions } from "@patternfly/react-core";
 
 const isValid = (url) => {
   try {

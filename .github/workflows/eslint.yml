@@ -1,5 +1,5 @@
 # Run eslint to find code issues
-name: Run eslint
+name: Eslint
 
 on: [push, pull_request]
 

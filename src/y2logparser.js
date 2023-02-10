@@ -25,7 +25,10 @@ function component_group(name) {
 }
 
 export default function y2logparser(y2log) {
-  console.time("Parsing y2log");
+  if (process.env.NODE_ENV !== "production") {
+    console.time("Parsing y2log");
+  }
+
   const lines = [];
   const components = new Set();
   const log_regexp = /^(\d\d\d\d-\d\d-\d\d) (\d\d:\d\d:\d\d) <(\d)> ([^(]+)\((\d+)\) \[(\S+)\] (.*)/;
@@ -67,8 +70,10 @@ export default function y2logparser(y2log) {
     }
   });
 
-  console.timeEnd("Parsing y2log");
-  console.log("Loaded " + lines.length + " lines");
+  if (process.env.NODE_ENV !== "production") {
+    console.timeEnd("Parsing y2log");
+    console.log("Loaded " + lines.length + " lines");
+  }
 
   return { lines, components };
 }

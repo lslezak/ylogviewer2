@@ -40,7 +40,6 @@ export default function LogCard({ name, data }) {
   const [components, setComponents] = useState([]);
 
   const onLevelChangeCallback = (filter) => {
-    console.log("Updated level fileter", logLevels, filter);
     setLogLevels(filter);
   };
 

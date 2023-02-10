@@ -90,6 +90,8 @@ Here are some ideas how to improve the viewer:
 - Bookmarks to easily mark some interesting parts and easily navigate between
   them (e.g. like in Visual Studio Code)
 - Better UI, better colors
+- Performance and memory optimizations, in some situations it is slow when
+  working with huge logs
 
 ## Used Libraries
 

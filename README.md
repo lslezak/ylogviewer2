@@ -36,6 +36,44 @@ You can load some example logs:
     stay at your machine!
   - Offline mode - the viewer can be used without internet connection
 
+## Build
+
+You need NodeJS at version 12.22 or higher, tested with NodeJS 16.
+
+In openSUSE ditributions run this command to install the latest NodeJS available:
+
+```
+zypper install nodejs
+```
+
+Then install the needed NPM packages:
+
+```
+npm install
+```
+
+And build the page from the sources:
+
+```
+npm run build
+```
+
+The page is generated in the `dist/` subdirectory. Just deploy the content on
+the server or you can open the `dist/index.html` file in a browser.
+
+### Development
+
+For building in development mode run:
+
+```
+HOST=localhost npm run start:dev
+```
+
+This will also start a development server at `http://localhost:9000`
+and automatically open that page in your preferred browser. This also enables
+the hot reload feature so the page is automatically updated in the browser
+whenever you change a source file.
+
 ## TODO
 
 Here are some ideas how to improve the viewer:

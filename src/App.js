@@ -6,8 +6,7 @@ import FirefoxWarning from "./FirefoxWarning";
 import InputSelectionCard from "./InputSelectionCard";
 import LogCard from "./LogCard";
 import NotesCard from "./NotesCard";
-
-import "./App.css";
+import FooterSection from "./FooterSection";
 
 const initialState = {
   name: null,
@@ -53,6 +52,10 @@ export default function App() {
           { state.name
             ? <LogCard data={state.data} name={state.name} />
             : <NotesCard />}
+        </PageSection>
+        <PageSection isFilled />
+        <PageSection isFilled={false} variant="light">
+          <FooterSection />
         </PageSection>
       </Page>
     </>

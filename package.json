@@ -1,6 +1,6 @@
 {
-  "name": "ylogbrowser",
-  "version": "0.0.1",
+  "name": "ylogviewer2",
+  "version": "0.1.0",
   "description": "Browse the YaST log files",
   "browser": "index.js",
   "repository": "https://github.com/lslezak/ylogviewer2",

@@ -40,6 +40,9 @@ export default function LogCard({ name, data }) {
   const [components, setComponents] = useState([]);
 
   const onLevelChangeCallback = (filter) => {
+    // TODO: hide the elements using CSS, re-rendering of thousands of lines is expensive:
+    // document.styleSheets[0].insertRule('.logline.loglevel-1{display:none}')
+    // document.styleSheets[0].deleteRule(0)
     setLogLevels(filter);
   };
 

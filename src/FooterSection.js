@@ -9,8 +9,8 @@ export default function FooterSection() {
     <Flex justifyContent={{ default: "justifyContentSpaceBetween" }}>
       <FlexItem>{pkg.name}-{pkg.version}</FlexItem>
       <FlexItem>
-        <Text component={TextVariants.a} target="_blank" href="https://github.com/lslezak/y2logviewer2">
-          <GithubIcon /> lslezak/y2logviewer2
+        <Text component={TextVariants.a} target="_blank" href="https://github.com/lslezak/ylogviewer2">
+          <GithubIcon /> lslezak/ylogviewer2
         </Text>
       </FlexItem>
     </Flex>
